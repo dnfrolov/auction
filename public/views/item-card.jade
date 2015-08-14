@@ -1,0 +1,16 @@
+.ui.card
+    .image
+        img(height="300", ng-src="{{item.image}}")
+    .content
+        .header {{item.name}}
+        .meta
+            span Created at {{item.createdAt | date : 'yyyy/MM/dd HH:mm'}}
+        .description {{item.description}}
+    .extra.content
+        .ui.compact.menu(ng-if="viewMode === 'overview'")
+            a.item(ui-sref="item({id: item.id})")
+                i.icon.users
+                |  Auction Room
+                .floating.ui.teal.label 22
+        div(ng-if="viewMode === 'detail'")
+            a.ui.teal.tag.label 22

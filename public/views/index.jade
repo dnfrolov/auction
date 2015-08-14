@@ -1,0 +1,32 @@
+doctype html
+html(lang="en", ng-app="auction")
+    head
+        title Auction
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge;")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        link(rel="stylesheet", type="text/css", href="vendor/semantic-ui/dist/semantic.min.css")
+
+
+    body.ui.container
+
+        .ui.secondary.pointing.menu
+            a.active.item Items
+
+        div(ui-view)
+
+
+        script(src="vendor/jquery/dist/jquery.min.js")
+        script(src="vendor/semantic-ui/dist/semantic.min.js")
+
+        script(src="vendor/angular/angular.min.js")
+        script(src="vendor/ui-router/release/angular-ui-router.min.js")
+        script(src="vendor/angular-resource/angular-resource.min.js")
+
+
+        script(src="app/module.js")
+        script(src="app/item-controller.js")
+        script(src="app/items-controller.js")
+        script(src="app/item-resource.js")
+        script(src="app/au-item-card.js")

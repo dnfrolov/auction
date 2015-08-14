@@ -1,0 +1,21 @@
+{
+  "name": "scatter-test",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "scatter": "^0.7.3",
+    "lodash": "^3.10.1",
+    "sequelize": "^3.5.1",
+    "mysql": "^2.8.0",
+    "config": "^1.15.0",
+    "express": "^4.13.3",
+    "body-parser": "^1.13.3",
+    "jade": "^1.11.0"
+  }
+}

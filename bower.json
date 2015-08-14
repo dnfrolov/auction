@@ -1,0 +1,14 @@
+{
+  "name": "scatter-test",
+  "version": "0.0.0",
+  "authors": [],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.4",
+    "ui-router": "~0.2.15",
+    "semantic-ui": "~2.0.8",
+    "jquery": "~2.1.4",
+    "angular-resource": "~1.4.4"
+  }
+}
