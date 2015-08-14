@@ -21,5 +21,5 @@ module.exports = function (baseRouter, Item, User) {
 };
 
 module.exports.__module = {
-    args: ['base-router', 'model/item', 'model/user']
+    args: ['base-router', 'model/item', 'model/user', 'model/bid']
 };
