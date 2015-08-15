@@ -8,7 +8,7 @@
         .six.wide.column
             au-item-card(item="vm.item", view-mode="detail")
         .six.wide.column
-            button.ui.green.basic.button Place a Bid
+            button.ui.green.basic.button(ng-click="vm.placeBid()") Place a Bid
             .ui.large.feed
                 .event(ng-repeat="bidder in vm.item.bidders")
                     .label
