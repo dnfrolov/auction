@@ -1,11 +1,14 @@
 'use strict';
 
 var _ = require('lodash');
+var events = require('../shared/events');
 
-module.exports = function (Bid, User, events) {
+module.exports = function (io, services) {
+    var bidService = services.bidService;
+    var userService = services.userService;
 
     function emitNewBidder(io, bid) {
-        return User
+        return userService
             .findById(bid.userId, {alone: true})
             .then(function (user) {
                 io.to(roomName(bid.itemId)).emit(events.newBidder ,user);
@@ -15,7 +18,7 @@ module.exports = function (Bid, User, events) {
     }
 
     function onCreateBid(io, rawBid){
-        Bid
+        bidService
             .create(rawBid)
             .then(_.partial(emitNewBidder, io))
             .catch(function (err) {
@@ -31,14 +34,8 @@ module.exports = function (Bid, User, events) {
         return 'room_' + id;
     }
 
-    return function (io) {
-        io.on('connection', function (socket) {
-            socket.on(events.joinItem, _.partial(onJoin, socket));
-            socket.on(events.createBid, _.partial(onCreateBid, io));
-        });
-    };
-};
-
-module.exports.__module = {
-    args: ['bid-api', 'user-api', 'events']
+    io.on('connection', function (socket) {
+        socket.on(events.joinItem, _.partial(onJoin, socket));
+        socket.on(events.createBid, _.partial(onCreateBid, io));
+    });
 };

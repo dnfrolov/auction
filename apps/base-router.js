@@ -2,8 +2,9 @@
 
 var _ = require('lodash');
 var express = require('express');
+var errors = require('./errors');
 
-module.exports = function (errors, dataErrors) {
+module.exports = function (dataErrors) {
 
     function errorHandler(err, req, res, next) {
         var status = 500;
@@ -63,7 +64,6 @@ module.exports = function (errors, dataErrors) {
             }).catch(next);
         });
 
-        //error handling
         router.use(errorHandler);
 
         return router;

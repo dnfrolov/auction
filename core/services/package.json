@@ -1,0 +1,11 @@
+{
+  "name": "services",
+  "version": "0.0.1",
+  "main": "index.js",
+  "private": true,
+
+  "plugin": {
+    "provides": ["services"],
+    "consumes": ["database"]
+  }
+}

@@ -1,9 +1,11 @@
 'use strict';
 
-module.exports = function (User, Item) {
-    var api = Object.create(User);
+module.exports = function (models) {
+    var Item = models.Item;
+    var User = models.User;
+    var self = Object.create(User);
 
-    api.findById = function (id, opts) {
+    self.findById = function (id, opts) {
         opts = opts || {};
         var qOpts = {
             where: {
@@ -24,7 +26,7 @@ module.exports = function (User, Item) {
         });
     };
 
-    api.create = function (data) {
+    self.create = function (data) {
         return User
             .findOrCreate({where: {name: data.name}})
             .spread(function (user, created) {
@@ -32,9 +34,5 @@ module.exports = function (User, Item) {
             });
     };
 
-    return api;
-};
-
-module.exports.__module = {
-    args: ['model/user', 'model/item']
+    return self;
 };

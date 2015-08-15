@@ -1,26 +1,24 @@
 'use strict';
 
+var path = require('path');
 var http = require('http');
-var Scatter = require('scatter');
-var scatter = new Scatter();
 var socket  = require('socket.io');
+var architect = require("architect");
+var architectConfig = architect.loadConfig(path.join(__dirname, './architect-config.js'));
 
-scatter.registerParticles([
-    __dirname + '/core/*',
-    __dirname + '/app',
-    __dirname + '/shared'
-]);
+architect.createApp(architectConfig, function (err, app) {
+    if (err) {
+        console.log(err, err.stack);
+        throw err;
+    }
 
-scatter.load('express-app').then(function (expressApp) {
-   return scatter.load('io-app').then(function (ioApp) {
-       var app = expressApp();
-       var server = http.Server(app);
 
-       var io = socket(server);
-       ioApp(io);
+    var apps = app.getService('apps');
 
-       server.listen(3001);
-   });
-}).catch(function (err) {
-    console.log(err, err.stack);
+    var eApp = apps.expressApp();
+    var server = http.Server(eApp);
+
+    var io = socket(server);
+    apps.ioApp(io);
+    server.listen(3001);
 });

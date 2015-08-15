@@ -2,10 +2,12 @@
 
 var _ = require('lodash');
 
-module.exports = function (Item, User) {
-    var api = Object.create(Item);
+module.exports = function (models) {
+    var Item = models.Item;
+    var User = models.User;
+    var self = Object.create(Item);
 
-    api.findById = function (id) {
+    self.findById = function (id) {
         return Item.findOne({
             where: {
                 id: id
@@ -21,7 +23,7 @@ module.exports = function (Item, User) {
         });
     };
 
-    api.findAll = function () {
+    self.findAll = function () {
         return Item.findAll({
             include: [{
                 model: User,
@@ -37,9 +39,5 @@ module.exports = function (Item, User) {
         });
     };
 
-    return api;
-};
-
-module.exports.__module = {
-    args: ['model/item', 'model/user']
+    return self;
 };
