@@ -1,8 +1,9 @@
-.ui.grid
-    .right.aligned.sixteen.wide.column
-        .ui.action.input
+.ui.one.column.grid
+    .right.aligned.column
+        .ui.left.icon.action.input
+            i.search.icon
             input(type="text", placeholder="Search...", ng-model="vm.search")
-            button.ui.button Search
-    .sixteen.wide.column
+            button.ui.blue.submit.button Search
+    .column
         .ui.cards
             au-item-card(item="item", ng-repeat="item in vm.items | filter : vm.search", view-mode="overview")

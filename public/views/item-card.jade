@@ -1,10 +1,10 @@
-.ui.card
+.ui.green.card
     .image
         img(height="300", ng-src="{{item.image}}")
     .content
         .header {{item.name}}
         .meta
-            span Created at {{item.createdAt | date : 'yyyy/MM/dd HH:mm'}}
+            .date Created at {{item.createdAt | date : 'yyyy/MM/dd HH:mm'}}
         .description {{item.description}}
     .extra.content
         .ui.compact.menu(ng-if="viewMode === 'overview'")

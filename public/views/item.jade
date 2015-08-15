@@ -1,3 +1,19 @@
-div
-    au-item-card(item="vm.item", view-mode="detail")
-    button.ui.green.basic.button Place Bid
+.ui.centered.grid.container
+    .row
+        .column
+            a(ui-sref="items")
+                i.black.large.left.arrow.icon
+
+    .row
+        .six.wide.column
+            au-item-card(item="vm.item", view-mode="detail")
+        .six.wide.column
+            button.ui.green.basic.button Place a Bid
+            .ui.large.feed
+                .event(ng-repeat="bidder in vm.item.bidders")
+                    .label
+                        i.blue.comment.icon
+                    .content
+                        .summary
+                            | {{bidder.name}} placed a bid at
+                            .date {{bidder.createdAt | date : 'yyyy/MM/dd HH:mm'}}
