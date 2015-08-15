@@ -6,9 +6,9 @@ module.exports = function setup(options, imports, register) {
 
     register(null, {
         services: {
-            bidService: require('./bid-service')(models),
-            itemService: require('./item-service')(models),
-            userService: require('./user-service')(models),
+            bidService: require('./services/bid')(models),
+            itemService: require('./services/item')(models),
+            userService: require('./services/user')(models),
             errors: imports.database.errors
         }
     });

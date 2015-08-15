@@ -1,5 +1,5 @@
 module.exports = [
     "./core/data",
-    "./core/services",
+    "./core/business",
     "./apps"
 ];
