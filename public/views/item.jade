@@ -8,8 +8,20 @@
         .six.wide.column
             au-item-card(item="vm.item", view-mode="detail")
         .six.wide.column
-            button.ui.green.basic.button(ng-click="vm.placeBid()", ng-if="vm.allowPlaceBid()")
-                | Place a Bid
+
+            .ui.grid.field
+                .eight.wide.column
+                    .ui.left.icon.input
+                        input(type="text", placeholder="Say something..")
+                        i.comment.icon
+                .eight.wide.column
+                    button.ui.green.basic.button(ng-click="vm.placeBid()", ng-class="vm.allowPlaceBid() ? '' : 'disabled'")
+                        | Place a Bid
+
+            h4.ui.horizontal.divider.header
+                i.comments.icon
+                | {{vm.item.bidders.length}} {{vm.item.bidders.length > 1 ? 'Bids' : 'Bid'}}
+
             .ui.large.feed
                 .event(ng-repeat="bidder in vm.item.bidders")
                     .label
