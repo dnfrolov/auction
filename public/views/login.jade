@@ -1,0 +1,12 @@
+.ui.middle.aligned.centered.login.grid
+    .row
+        .column
+            h1.ui.blue.header Sing in to your account
+            .ui.padded.segment
+                form.ui.large.form(ng-class="vm.loading ? 'loading' : ''")
+                    .required.field
+                        .ui.left.icon.input
+                            i.user.icon
+                            input(type="text", placeholder="User Name", ng-model="vm.name")
+
+                    button.ui.blue.fluid.submit.button(type="submit", ng-click="vm.singIn()") Sing in

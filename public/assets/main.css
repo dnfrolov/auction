@@ -1,0 +1,11 @@
+.nav {
+    padding: 10px 0;
+}
+
+.login {
+    height: 100vh;
+}
+
+.login .column {
+    max-width: 450px;
+}

@@ -13,7 +13,7 @@ module.exports = function (sequelize) {
             type: Sequelize.STRING(50),
             allowNull: false,
             validate: {
-                len: [5, 50]
+                len: [3, 50]
             }
         }
     });

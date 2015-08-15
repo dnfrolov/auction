@@ -7,14 +7,14 @@ html(lang="en", ng-app="auction")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
         link(rel="stylesheet", type="text/css", href="vendor/semantic-ui/dist/semantic.min.css")
+        link(rel="stylesheet", type="text/css", href="assets/main.css")
 
 
     body.ui.container
 
-        .ui.secondary.pointing.menu
-            a.active.item(ui-sref="items") Items
+        .nav(ui-view="navView")
 
-        div(ui-view)
+        .main(ui-view)
 
 
         script(src="vendor/jquery/dist/jquery.min.js")
@@ -26,7 +26,9 @@ html(lang="en", ng-app="auction")
 
 
         script(src="app/module.js")
+        script(src="app/login-controller.js")
         script(src="app/item-controller.js")
         script(src="app/items-controller.js")
         script(src="app/resources.js")
         script(src="app/au-item-card.js")
+        script(src="app/auth-service.js")

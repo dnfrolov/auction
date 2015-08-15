@@ -15,6 +15,14 @@ module.exports = function (User, Item) {
         });
     };
 
+    api.create = function (data) {
+        return User
+            .findOrCreate({where: {name: data.name}})
+            .spread(function (user, created) {
+                return user;
+            });
+    };
+
     return api;
 };
 

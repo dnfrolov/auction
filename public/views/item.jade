@@ -8,12 +8,16 @@
         .six.wide.column
             au-item-card(item="vm.item", view-mode="detail")
         .six.wide.column
-            button.ui.green.basic.button(ng-click="vm.placeBid()") Place a Bid
+            button.ui.green.basic.button(ng-click="vm.placeBid()", ng-if="vm.allowPlaceBid")
+                | Place a Bid
             .ui.large.feed
                 .event(ng-repeat="bidder in vm.item.bidders")
                     .label
-                        i.blue.comment.icon
+                        i.teal.comment.icon(ng-if="!$first")
+                        i.violet.trophy.icon(ng-if="$first")
                     .content
                         .summary
-                            | {{bidder.name}} placed a bid at
+                            span(ng-if="bidder.id !== vm.currentUserId") {{bidder.name}}
+                            span(ng-if="bidder.id === vm.currentUserId") You
+                            |  placed a bid at
                             .date {{bidder.createdAt | date : 'yyyy/MM/dd HH:mm'}}
