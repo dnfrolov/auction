@@ -69,7 +69,3 @@ module.exports = function (dataErrors) {
         return router;
     };
 };
-
-module.exports.__module = {
-    args: ['errors', 'data-errors']
-};
