@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function (Bid) {
-    return Object.create(Bid);
+module.exports = function (models) {
+    return Object.create(models.Bid);
 };
