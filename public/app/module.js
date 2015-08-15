@@ -35,8 +35,8 @@
                         }
                     },
                     resolve: {
-                        items: ['itemResource', function (itemResource) {
-                            return itemResource.query().$promise;
+                        items: ['Item', function (Item) {
+                            return Item.query().$promise;
                         }],
                         currentUser: ['authService', function (authService) {
                             return authService.currentUser();
@@ -57,8 +57,8 @@
                         }
                     },
                     resolve: {
-                        item: ['itemResource', '$stateParams', function (itemResource, $stateParams) {
-                            return itemResource.get({id: $stateParams.id}).$promise;
+                        item: ['Item', '$stateParams', function (Item, $stateParams) {
+                            return Item.get({id: $stateParams.id}).$promise;
                         }]
                     }
                 });

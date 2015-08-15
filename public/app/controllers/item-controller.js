@@ -9,7 +9,7 @@
         return true;
     }
 
-    function ItemController(item, currentUser, $scope, auSocket) {
+    function ItemController(item, currentUser, $scope, socketService) {
         var vm = this;
 
         vm.item = item;
@@ -19,16 +19,16 @@
         };
         vm.currentUserId = currentUser.id;
 
-        auSocket.joinItem(item);
+        socketService.joinItem(item);
 
         vm.placeBid = function () {
-            auSocket.createBid({
+            socketService.createBid({
                 userId: currentUser.id,
                 itemId: item.id
             });
         };
 
-        auSocket.onNewBidder(function (bidder) {
+        socketService.onNewBidder(function (bidder) {
             $scope.$apply(function () {
                 vm.item.bidders.push(bidder);
             });
@@ -37,6 +37,6 @@
 
     angular
         .module('auction')
-        .controller('ItemController', ['item', 'currentUser', '$scope', 'auSocket', ItemController]);
+        .controller('ItemController', ['item', 'currentUser', '$scope', 'socketService', ItemController]);
 
 })(angular);

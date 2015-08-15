@@ -21,5 +21,5 @@ module.exports = function (baseRouter) {
 };
 
 module.exports.__module = {
-    args: ['base-router', 'bid-api', 'user-api', 'item-api']
+    args: ['base-router', 'user-api', 'item-api']
 };
