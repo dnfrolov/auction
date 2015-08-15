@@ -51,6 +51,18 @@ module.exports = function (errors, dataErrors) {
             }).catch(next);
         });
 
+        router.put('/:id', function (req, res, next) {
+            Entity.update(req.body, {
+                where: {
+                    id: req.params.id
+                }
+            }).then(function (entity) {
+                res.send({
+                    id: entity.id
+                });
+            }).catch(next);
+        });
+
         //error handling
         router.use(errorHandler);
 

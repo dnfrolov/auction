@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (baseRouter, Item, User) {
+module.exports = function (baseRouter) {
     var models = Array.prototype.slice.call(arguments, 1);
 
     return function (app) {
@@ -21,5 +21,5 @@ module.exports = function (baseRouter, Item, User) {
 };
 
 module.exports.__module = {
-    args: ['base-router', 'model/item', 'model/user', 'model/bid']
+    args: ['base-router', 'bid-api', 'user-api', 'item-api']
 };

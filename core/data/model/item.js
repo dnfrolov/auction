@@ -21,7 +21,7 @@ module.exports = function (sequelize) {
             type: Sequelize.STRING(250),
             allowNull: true,
             validate: {
-                len: [5, 50]
+                len: [5, 250]
             }
         },
         image: {

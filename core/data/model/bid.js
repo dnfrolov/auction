@@ -30,12 +30,12 @@ module.exports = function (sequelize, User, Item) {
     });
 
     Item.belongsToMany(User, {
-        as: 'bids',
+        as: 'bidders',
         through: Bid,
         foreignKey: 'itemId'
     });
     User.belongsToMany(Item, {
-        as: 'bidders',
+        as: 'bids',
         through: Bid,
         foreignKey: 'userId'
     });
@@ -45,5 +45,5 @@ module.exports = function (sequelize, User, Item) {
 };
 
 module.exports.__module = {
-    args: ['db', 'model/User', 'model/Item']
+    args: ['db', 'model/user', 'model/item']
 };
