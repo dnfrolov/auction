@@ -2,7 +2,6 @@
     'use strict';
 
     function authService(User) {
-        //var currentUser = {"id":1};
         var currentUser;
 
         return {

@@ -9,6 +9,7 @@
     "ui-router": "~0.2.15",
     "semantic-ui": "~2.0.8",
     "jquery": "~2.1.4",
-    "angular-resource": "~1.4.4"
+    "angular-resource": "~1.4.4",
+    "angular-socket-io": "~0.7.0"
   }
 }

@@ -9,25 +9,34 @@
         return true;
     }
 
-    function ItemController(item, currentUser, Bid) {
+    function ItemController(item, currentUser, $scope, auSocket) {
         var vm = this;
 
         vm.item = item;
 
-        vm.allowPlaceBid = allowPlaceBid(item.bidders, currentUser);
+        vm.allowPlaceBid = function () {
+            return allowPlaceBid(item.bidders, currentUser)
+        };
         vm.currentUserId = currentUser.id;
 
+        auSocket.joinItem(item);
+
         vm.placeBid = function () {
-            var bid = new Bid({
+            auSocket.createBid({
                 userId: currentUser.id,
                 itemId: item.id
             });
-            bid.$save();
         };
+
+        auSocket.onNewBidder(function (bidder) {
+            $scope.$apply(function () {
+                vm.item.bidders.push(bidder);
+            });
+        });
     }
 
     angular
         .module('auction')
-        .controller('ItemController', ['item', 'currentUser', 'Bid', ItemController]);
+        .controller('ItemController', ['item', 'currentUser', '$scope', 'auSocket', ItemController]);
 
 })(angular);

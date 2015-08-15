@@ -3,8 +3,9 @@
 module.exports = function (User, Item) {
     var api = Object.create(User);
 
-    api.findById = function (id) {
-        return User.findOne({
+    api.findById = function (id, opts) {
+        opts = opts || {};
+        var qOpts = {
             where: {
                 id: id
             },
@@ -12,6 +13,14 @@ module.exports = function (User, Item) {
                 model: Item,
                 as: 'bids'
             }
+        };
+
+        if (opts.alone) {
+            delete qOpts.include;
+        }
+
+        return User.findOne(qOpts).then(function (user) {
+            return user.get({plain: true});
         });
     };
 

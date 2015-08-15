@@ -4,7 +4,8 @@
     angular
         .module('auction', [
             'ui.router',
-            'ngResource'
+            'ngResource',
+            'btford.socket-io'
         ])
         .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             $stateProvider
