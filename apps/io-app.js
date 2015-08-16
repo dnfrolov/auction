@@ -12,6 +12,7 @@ module.exports = function (io, services) {
             .findById(bid.itemId)
             .then(function (item) {
                 io.to(roomName(bid.itemId)).emit(events.newBidder, item);
+                io.emit(events.newBidder, item);
             });
     }
 
