@@ -1,10 +1,10 @@
 {
   "db": {
-    "host": "localhost",
+    "host": "us-cdbr-iron-east-02.cleardb.net",
     "port": 3306,
-    "username": "root",
-    "password": "!QAZ2wsx",
-    "database": "auction-test",
+    "username": "b3d86ade9059f5",
+    "password": "bcdb2955",
+    "database": "heroku_6ed35b5f1ecd121",
     "dialect": "mysql"
   }
 }
