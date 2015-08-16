@@ -7,5 +7,5 @@
     "database": "auction-test",
     "dialect": "mysql"
   },
-  "port": 3001
+  "port": 80
 }
