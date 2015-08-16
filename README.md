@@ -1,5 +1,4 @@
 ## Simple Auction web site
-
 You can find it running at https://desolate-eyrie-6667.herokuapp.com.
 
 ### Features overview
