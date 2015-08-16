@@ -6,6 +6,5 @@
     "password": "!QAZ2wsx",
     "database": "auction-test",
     "dialect": "mysql"
-  },
-  "port": 3001
+  }
 }
