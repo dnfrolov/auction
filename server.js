@@ -22,7 +22,7 @@ architect.createApp(architectConfig, function (err, app) {
     var io = socket(server);
     apps.ioApp(io);
 
-    var port = config.get('port');
+    var port = process.env.PORT || config.get('port');
     server.listen(port);
     console.log('listening on port: ' + port);
 });
