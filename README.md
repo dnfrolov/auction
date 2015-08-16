@@ -35,6 +35,6 @@ It assumes Node.js installed
 
 * clone repository
 * set env variable **PORT** 
-* set env variable **DATABASE_URL**. Connection string to db - `mysql://user:pass@example.com:3306/dbname`
+* set env variable **DATABASE_URL** - connection string to db - `mysql://user:pass@example.com:3306/dbname`
 * exec `npm install`
 * exec `npm start`
