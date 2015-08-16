@@ -12,8 +12,6 @@ module.exports = function (io, services) {
             .findById(bid.userId, {alone: true})
             .then(function (user) {
                 io.to(roomName(bid.itemId)).emit(events.newBidder ,user);
-            }).catch(function (err) {
-                console.log(err);
             });
     }
 

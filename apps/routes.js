@@ -2,7 +2,7 @@
 
 module.exports = function (app, services) {
     var baseRouter = require('./base-router')(services.errors);
-    var models = [services.userService, services.itemService];
+    var models = [services.userService, services.itemService, services.bidService];
 
     app.get('/', function (req, res) {
         res.render('index');

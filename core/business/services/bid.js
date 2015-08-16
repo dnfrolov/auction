@@ -1,5 +1,10 @@
 'use strict';
 
 module.exports = function (models) {
-    return Object.create(models.Bid);
+    return {
+        name: models.Bid.name,
+        create: function (data) {
+            return models.Bid.create(data);
+        }
+    };
 };
