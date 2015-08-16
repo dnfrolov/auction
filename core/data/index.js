@@ -16,6 +16,16 @@ module.exports = function setup(options, imports, register) {
     Bid.sync();
 
 
+    User.hasMany(Item, {
+        foreignKey: 'userId',
+        as: 'items'
+    });
+
+    Item.belongsTo(User, {
+        foreignKey: 'userId',
+        as: 'winner'
+    });
+
     Item.belongsToMany(User, {
         as: 'bidders',
         through: Bid,
@@ -29,6 +39,7 @@ module.exports = function setup(options, imports, register) {
 
     register(null, {
         database: {
+            db: sequelize,
             errors: {
                 ValidationError: Sequelize.ValidationError,
                 UniqueConstraintError: Sequelize.UniqueConstraintError

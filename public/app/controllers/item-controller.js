@@ -28,9 +28,9 @@
             });
         };
 
-        socketService.onNewBidder(function (bidder) {
+        socketService.onNewBidder(function (item) {
             $scope.$apply(function () {
-                vm.item.bidders.push(bidder);
+                vm.item = item;
             });
         });
     }

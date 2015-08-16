@@ -5,13 +5,13 @@ var events = require('../shared/events');
 
 module.exports = function (io, services) {
     var bidService = services.bidService;
-    var userService = services.userService;
+    var itemService = services.itemService;
 
     function emitNewBidder(io, bid) {
-        return userService
-            .findById(bid.userId, {alone: true})
-            .then(function (user) {
-                io.to(roomName(bid.itemId)).emit(events.newBidder ,user);
+        return itemService
+            .findById(bid.itemId)
+            .then(function (item) {
+                io.to(roomName(bid.itemId)).emit(events.newBidder, item);
             });
     }
 
