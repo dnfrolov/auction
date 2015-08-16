@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "node node_modules/bower/bin/bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,6 +12,7 @@
   "dependencies": {
     "architect": "^0.1.11",
     "body-parser": "^1.13.3",
+    "bower": "^1.4.1",
     "config": "^1.15.0",
     "express": "^4.13.3",
     "jade": "^1.11.0",
