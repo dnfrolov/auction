@@ -4,16 +4,12 @@
             a(ui-sref="items", ui-sref-opts="{reload: true}")
                 i.black.large.left.arrow.icon
 
-    .row
-        .six.wide.column
+    .stackable.row
+        .seven.wide.column
             au-item-card(item="vm.item", view-mode="detail")
         .six.wide.column
 
             .ui.grid.field
-                .eight.wide.column
-                    .ui.left.icon.input
-                        input(type="text", placeholder="Say something..")
-                        i.comment.icon
                 .eight.wide.column
                     button.ui.green.basic.button(ng-click="vm.placeBid()", ng-class="vm.allowPlaceBid() ? '' : 'disabled'")
                         | Place a Bid
