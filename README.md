@@ -14,6 +14,8 @@ Project consists of front-end and back-end parts.
 
 Back-end is divided into 3 modules: **db**, **business**, **apps**. **db** is responsible for database communication. **business** provides abstraction level on **db** implementation. **apps** consumes **business** to provide RESTful API and to initialize server with http and socket support.
 
+There is **shared** folder. it's supposed to be used on both side: front-end and back-end. To accomplish that front-end must be move to use browserify.
+
 ### Stack
 
 #### Back-End
