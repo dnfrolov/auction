@@ -21,6 +21,7 @@ Back-end is divided into 3 modules: **db**, **business**, **apps**. **db** is re
 * architect
 * config
 * express
+* MySQL
 * Sequelize
 * socket.io
 
@@ -30,8 +31,10 @@ Back-end is divided into 3 modules: **db**, **business**, **apps**. **db** is re
 * socket.io
 
 ### How can I run it locally
-It assumes Node.js installed.
+It assumes Node.js installed
 
+* set env variable **PORT** 
+* set env variable **DATABASE_URL**. Connection string to db - `mysql://user:pass@example.com:3306/dbname`
 * clone repository
 * exec `npm install`
 * exec `npm start`
