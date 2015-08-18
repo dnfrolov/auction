@@ -1,26 +1,20 @@
 'use strict';
 
+var config = require('config');
 var Sequelize = require('sequelize');
-var sequelize = require('./db');
-
+var dbString = process.env.DATABASE_URL || process.env.CLEARDB_DATABASE_URL || config.get('db');
+var sequelize = require('./db')(dbString);
 
 module.exports = function setup(options, imports, register) {
 
     var Item = sequelize.define('item', require('./model/item'));
-    Item.sync();
-
     var User = sequelize.define('user', require('./model/user'));
-    User.sync();
-
     var Bid = sequelize.define('bid', require('./model/bid'));
-    Bid.sync();
-
 
     User.hasMany(Item, {
         foreignKey: 'userId',
         as: 'items'
     });
-
     Item.belongsTo(User, {
         foreignKey: 'userId',
         as: 'winner'
@@ -37,18 +31,20 @@ module.exports = function setup(options, imports, register) {
         foreignKey: 'userId'
     });
 
-    register(null, {
-        database: {
-            db: sequelize,
-            errors: {
-                ValidationError: Sequelize.ValidationError,
-                UniqueConstraintError: Sequelize.UniqueConstraintError
-            },
-            models: {
-                Bid: Bid,
-                Item: Item,
-                User: User
+    sequelize.sync().then(function () {
+        register(null, {
+            database: {
+                db: sequelize,
+                errors: {
+                    ValidationError: Sequelize.ValidationError,
+                    UniqueConstraintError: Sequelize.UniqueConstraintError
+                },
+                models: {
+                    Bid: Bid,
+                    Item: Item,
+                    User: User
+                }
             }
-        }
-    })
+        });
+    });
 };

@@ -1,0 +1,22 @@
+{
+  "fixtures": [
+    {
+      "model": "Item",
+      "data": {
+        "id": 1,
+        "name": "item1",
+        "description": "description1",
+        "image": "image1.jpg"
+      }
+    }
+  ],
+  "expected": {
+    "id": 1,
+    "name": "item1",
+    "description": "description1",
+    "image": "image1.jpg",
+    "userId": null,
+    "biddersCount": 0,
+    "bidders": []
+  }
+}
