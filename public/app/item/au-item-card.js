@@ -7,7 +7,7 @@ function auItemCard() {
             viewMode: '@'
         },
         replace: true,
-        template: require('./views/item-card.html')
+        templateUrl: '/views/item-card.html'
     }
 }
 
