@@ -75,10 +75,15 @@ describe('item-service', function () {
         });
 
         //case3
-        //it('should return many bidders', function (done) {
-        //    var case3 = require('./case3.json');
-        //    _loadFixtures(case3.fixtures)
-        //});
+        it('should return many bidders', function (done) {
+            var case3 = require('./case3.json');
+            _loadFixtures(case3.fixtures).then(function () {
+                return itemService.findById(case3.expected.id);
+            }).then(function (item) {
+                item.should.have.properties(case3.expected);
+                done();
+            }).catch(done);
+        });
 
     });
 });

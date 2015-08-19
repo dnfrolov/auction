@@ -30,14 +30,27 @@
         "userId": 1,
         "itemId": 1
       }
+    },
+    {
+      "model": "Bid",
+      "data": {
+        "userId": 2,
+        "itemId": 1
+      }
     }
   ],
   "expected": {
     "id": 1,
-    "biddersCount": 1,
-    "bidders": [{
-      "id": 1,
-      "name": "dmitry"
-    }]
+    "biddersCount": 2,
+    "bidders": [
+      {
+        "id": 1,
+        "name": "dmitry"
+      },
+      {
+        "id": 2,
+        "name": "alex"
+      }
+    ]
   }
 }
