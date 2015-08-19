@@ -6,7 +6,7 @@ require('./services');
 require('./login');
 require('./item');
 
-var app = angular
+angular
     .module('auction', [
         'ui.router',
         'auServices',
