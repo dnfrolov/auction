@@ -25,16 +25,19 @@ before(function (done) {
     });
 });
 
-function loadFixtures(fixtures) {
-    return function (done) {
-        return _loadFixtures(fixtures).then(done).catch(done);
-    };
-}
-
 function _loadFixtures(fixtures) {
     return database.db.sync({force: true}).then(function () {
         return sequelizeFixtures.loadFixtures(fixtures, database.models);
     });
+}
+
+function test(tCase) {
+    _loadFixtures(tCase.fixtures).then(function () {
+        return itemService.findById(tCase.expected.id);
+    }).then(function (item) {
+        should(item).eql(tCase.expected);
+        done();
+    }).catch(done);
 }
 
 
@@ -65,22 +68,22 @@ describe('item-service', function () {
 
         //case2
         it('should return single bidder', function (done) {
-            var case2 = require('./case2.json');
+            var case2 = require('./case2');
             _loadFixtures(case2.fixtures).then(function () {
                 return itemService.findById(case2.expected.id);
             }).then(function (item) {
-                item.should.have.properties(case2.expected);
+                item.should.eql(case2.expected);
                 done();
             }).catch(done);
         });
 
         //case3
         it('should return many bidders', function (done) {
-            var case3 = require('./case3.json');
+            var case3 = require('./case3');
             _loadFixtures(case3.fixtures).then(function () {
                 return itemService.findById(case3.expected.id);
             }).then(function (item) {
-                item.should.have.properties(case3.expected);
+                item.should.eql(case3.expected);
                 done();
             }).catch(done);
         });
