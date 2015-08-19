@@ -54,13 +54,13 @@ describe('item-service', function () {
 
         //case1
         it('should return id, name, description, image, userId, biddersCount, bidders', function (done) {
-            var case1 = require('./case1.json');
+            var case1 = require('./case1');
             _loadFixtures(case1.fixtures).then(function () {
                 return itemService.findById(case1.expected.id);
             }).then(function (item) {
-                should(item).have.properties(case1.expected);
+                should(item).eql(case1.expected);
                 done();
-            }, done);
+            }).catch(done);
         });
 
         //case2

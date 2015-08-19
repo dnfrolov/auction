@@ -20,6 +20,7 @@ module.exports = function (models) {
             where: {
                 id: id
             },
+            attributes: ['id', 'name', 'description', 'image', 'createdAt', 'userId'],
             include: [{
                 model: User,
                 as: 'bidders',

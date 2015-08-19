@@ -1,4 +1,6 @@
-{
+'use strict';
+
+module.exports = {
   "fixtures": [
     {
       "model": "Item",
@@ -6,7 +8,8 @@
         "id": 1,
         "name": "item1",
         "description": "description1",
-        "image": "image1.jpg"
+        "image": "image1.jpg",
+        "createdAt": new Date('2014-02-03 11:00:00')
       }
     }
   ],
@@ -15,8 +18,9 @@
     "name": "item1",
     "description": "description1",
     "image": "image1.jpg",
+    "createdAt": new Date('2014-02-03 11:00:00'),
     "userId": null,
     "biddersCount": 0,
     "bidders": []
   }
-}
+};
