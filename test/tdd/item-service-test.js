@@ -31,16 +31,6 @@ function _loadFixtures(fixtures) {
     });
 }
 
-function test(tCase) {
-    _loadFixtures(tCase.fixtures).then(function () {
-        return itemService.findById(tCase.expected.id);
-    }).then(function (item) {
-        should(item).eql(tCase.expected);
-        done();
-    }).catch(done);
-}
-
-
 describe('item-service', function () {
 
     it('should have method #findById', function () {
@@ -49,44 +39,26 @@ describe('item-service', function () {
 
     describe('#findById', function () {
 
+        function _test(tCase) {
+            return function (done) {
+                _loadFixtures(tCase.fixtures).then(function () {
+                    return itemService.findById(tCase.expected.id);
+                }).then(function (item) {
+                    should(item).eql(tCase.expected);
+                    done();
+                }).catch(done);
+            };
+        }
+
         it('should return null for not found', function (done) {
             itemService.findById(1).then(function (item) {
                 should(item).be.null;
             }).then(done, done);
         });
 
-        //case1
-        it('should return id, name, description, image, userId, biddersCount, bidders', function (done) {
-            var case1 = require('./case1');
-            _loadFixtures(case1.fixtures).then(function () {
-                return itemService.findById(case1.expected.id);
-            }).then(function (item) {
-                should(item).eql(case1.expected);
-                done();
-            }).catch(done);
-        });
-
-        //case2
-        it('should return single bidder', function (done) {
-            var case2 = require('./case2');
-            _loadFixtures(case2.fixtures).then(function () {
-                return itemService.findById(case2.expected.id);
-            }).then(function (item) {
-                item.should.eql(case2.expected);
-                done();
-            }).catch(done);
-        });
-
-        //case3
-        it('should return many bidders', function (done) {
-            var case3 = require('./case3');
-            _loadFixtures(case3.fixtures).then(function () {
-                return itemService.findById(case3.expected.id);
-            }).then(function (item) {
-                item.should.eql(case3.expected);
-                done();
-            }).catch(done);
-        });
+        it('should return id, name, description, image, createdAt, userId, biddersCount, bidders', _test(require('./case1')));
+        it('should return single bidder', _test(require('./case2')));
+        it('should return many bidders', _test(require('./case3')));
 
     });
 });
