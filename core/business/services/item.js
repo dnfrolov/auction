@@ -20,14 +20,20 @@ module.exports = function (models) {
             where: {
                 id: id
             },
+            attributes: ['id', 'name', 'description', 'image', 'createdAt', 'userId'],
             include: [{
                 model: User,
-                as: 'bidders'
+                as: 'bidders',
+                attributes: ['id', 'name']
             }]
         }).then(function (item) {
-            var i = item.get({plain: true});
-            i.biddersCount = i.bidders.length;
-            return i;
+            if (item) {
+                var i = item.get({plain: true});
+                i.biddersCount = i.bidders.length;
+                i.bidders = _.map(i.bidders, _.partialRight(_.pick, ['id', 'name']));
+                return i;
+            }
+            return null;
         });
     };
 
