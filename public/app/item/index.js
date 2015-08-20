@@ -7,7 +7,7 @@ angular
         'ui.router',
         'auServices'
     ])
-    .config(['$stateProvider', require('./config')])
+    .config(['$stateProvider', require('./config-states')])
     .factory('Item', ['$resource', require('./item-resource')])
     .directive('auItemCard', [require('./au-item-card')])
     .controller('ItemController', ['item', 'currentUser', '$scope', 'socketService', require('./item-controller')])

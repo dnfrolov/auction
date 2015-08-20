@@ -1,6 +1,6 @@
 'use strict';
 
-function config($stateProvider) {
+function configStates($stateProvider) {
     $stateProvider
         .state('login', {
             url: '/',
@@ -10,12 +10,12 @@ function config($stateProvider) {
                     controller: 'LoginController as vm'
                 }
             },
-            onEnter: ['authService', '$state', function (authService, $state) {
+            onEnter: ['authService', 'notifyService', function (authService, notifyService) {
                 if (authService.currentUser()) {
-                    $state.go('items');
+                    notifyService.authorized.auEmit();
                 }
             }]
         });
 }
 
-module.exports = config;
+module.exports = configStates;

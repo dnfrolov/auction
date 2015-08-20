@@ -1,6 +1,6 @@
 'use strict';
 
-function LoginController(authService, $state) {
+function LoginController(authService, notifyService) {
     var vm = this;
 
     vm.singIn = function () {
@@ -9,7 +9,7 @@ function LoginController(authService, $state) {
         authService.login({
             name: vm.name
         }).then(function () {
-            $state.go('items');
+            notifyService.authorized.auEmit();
         }).finally(function () {
             vm.loading = false;
         });

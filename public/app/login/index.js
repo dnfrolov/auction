@@ -7,5 +7,5 @@ angular
         'ui.router',
         'auServices'
     ])
-    .config(['$stateProvider', require('./config')])
-    .controller('LoginController', ['authService', '$state', require('./login-controller')]);
+    .config(['$stateProvider', require('./config-states')])
+    .controller('LoginController', ['authService', 'notifyService', require('./login-controller')]);
