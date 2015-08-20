@@ -6,7 +6,7 @@ function config($stateProvider) {
             url: '/',
             views: {
                 '@': {
-                    templateUrl: '/views/login',
+                    template: require('./views/login.jade'),
                     controller: 'LoginController as vm'
                 }
             },

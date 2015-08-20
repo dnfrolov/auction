@@ -6,7 +6,7 @@ function config($stateProvider) {
             url: '/items',
             views: {
                 '@': {
-                    templateUrl: '/views/items',
+                    template: require('./views/items.jade'),
                     controller: 'ItemsController as vm'
                 },
                 'navView': {
@@ -31,7 +31,7 @@ function config($stateProvider) {
             url: '/:id',
             views: {
                 '@': {
-                    templateUrl: '/views/item',
+                    template: require('./views/item.jade'),
                     controller: 'ItemController as vm'
                 }
             },

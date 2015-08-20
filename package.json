@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node node_modules/bower/bin/bower install && node_modules/.bin/browserify --entry public/app/index.js --outfile public/assets/app.js",
+    "postinstall": "node node_modules/bower/bin/bower install",
     "test": "node_modules/.bin/mocha  --recursive --timeout 5000"
   },
   "author": "",
@@ -28,7 +28,8 @@
     "grunt": "^0.4.5",
     "mocha": "^2.2.5",
     "sequelize-fixtures": "^0.4.7",
-    "should": "^7.0.4"
+    "should": "^7.0.4",
+    "grunt-browserify": "^4.0.0"
   },
   "browserify": {
     "transform": [
