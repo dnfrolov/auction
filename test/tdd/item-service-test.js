@@ -10,6 +10,7 @@ var sequelizeFixtures = require('sequelize-fixtures');
 var architectConfig = architect.loadConfig(path.join(__dirname, '../../architect-config.js'));
 
 var database;
+var userService;
 var itemService;
 
 //load services from architect
@@ -19,7 +20,9 @@ before(function (done) {
             done(err);
         } else {
             database = app.getService('database');
-            itemService = app.getService('services').itemService;
+            var services = app.getService('services');
+            itemService = services.itemService;
+            userService = services.userService;
             done();
         }
     });
@@ -64,7 +67,7 @@ describe('item-service', function () {
     });
 
     it('should have method #findAll', function () {
-        itemService.should.have.a.property('findById').and.be.a.Function;
+        itemService.should.have.a.property('findAll').and.be.a.Function;
     });
 
     describe('#findAll', function () {
@@ -87,4 +90,27 @@ describe('item-service', function () {
             }).catch(done);
         });
     });
+});
+
+describe('user-service', function () {
+
+    beforeEach(function (done) {
+        database.db.sync({force: true}).then(done).catch(done);
+    });
+
+    it('should have method #create', function () {
+        userService.should.have.a.property('create').and.be.a.Function;
+    });
+
+    describe('#create', function () {
+        it('should return validation errors', function () {
+
+        });
+
+        it('should create user', function () {
+
+        });
+    });
+
+
 });
