@@ -8,7 +8,7 @@
         .description {{item.description}}
     .extra.content
         .ui.compact.menu(ng-if="viewMode === 'overview'")
-            a.item(ui-sref=".item({id: item.id})")
+            a.item(ui-sref="^.detail({id: item.id})")
                 i.icon.users
                 |  Auction Room
                 .floating.ui.teal.label {{item.biddersCount}}
