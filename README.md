@@ -32,6 +32,14 @@ There is **shared** folder. it's supposed to be used on both side: front-end and
 * semantic-ui
 * socket.io
 
+#### Utilities
+* grunt
+* browserify
+
+#### Test
+* mocha
+* should
+
 ### How can I run it locally
 It assumes Node.js installed
 
@@ -39,4 +47,8 @@ It assumes Node.js installed
 * set env variable **PORT** 
 * set env variable **DATABASE_URL** - connection string to db - `mysql://user:pass@example.com:3306/dbname`
 * exec `npm install`
+* exec `grunt dev`
 * exec `npm start`
+
+### Run tests
+`npm test`
