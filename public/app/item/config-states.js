@@ -5,7 +5,7 @@ function configStates($stateProvider) {
     var base = {
         name: 'item',
         abstract: true,
-        template: '<ui-view/>',
+        template: '<div ui-view="viewIndex"/>',
         resolve: {
             currentUser: ['authService', function (authService) {
                 return authService.currentUser();
@@ -23,12 +23,9 @@ function configStates($stateProvider) {
         url: '/item',
         parent: base,
         views: {
-            '@': {
+            'viewIndex': {
                 template: require('./views/items.jade'),
                 controller: 'ItemsController as vm'
-            },
-            'navView@': {
-                templateUrl: '/views/nav'
             }
         },
         resolve: {
@@ -43,7 +40,7 @@ function configStates($stateProvider) {
         url: '/item/:id',
         parent: base,
         views: {
-            '@': {
+            'viewIndex': {
                 template: require('./views/item.jade'),
                 controller: 'ItemController as vm'
             }

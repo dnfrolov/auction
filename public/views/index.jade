@@ -12,7 +12,8 @@ html(lang="en", ng-app="auction")
 
     body.ui.container
 
-        .nav(ui-view="navView")
+        .ui.large.secondary.pointing.menu
+                a.active.item(ui-sref="item.index", ui-sref-opts="{reload: true}") Items
 
         .main(ui-view)
 
