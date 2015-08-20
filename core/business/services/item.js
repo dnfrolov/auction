@@ -39,6 +39,7 @@ module.exports = function (models) {
 
     self.findAll = function () {
         return Item.findAll({
+            attributes: ['id', 'name', 'description', 'image', 'createdAt', 'userId'],
             include: [{
                 model: User,
                 as: 'bidders'

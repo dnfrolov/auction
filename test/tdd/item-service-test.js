@@ -53,12 +53,38 @@ describe('item-service', function () {
         it('should return null for not found', function (done) {
             itemService.findById(1).then(function (item) {
                 should(item).be.null;
-            }).then(done, done);
+                done();
+            }).catch(done);
         });
 
         it('should return id, name, description, image, createdAt, userId, biddersCount, bidders', _test(require('./case1')));
         it('should return single bidder', _test(require('./case2')));
         it('should return many bidders', _test(require('./case3')));
 
+    });
+
+    it('should have method #findAll', function () {
+        itemService.should.have.a.property('findById').and.be.a.Function;
+    });
+
+    describe('#findAll', function () {
+        it('should return empty array if there is nothing in db', function (done) {
+            database.db.sync({force: true}).then(function () {
+                return itemService.findAll();
+            }).then(function (items) {
+                should(items).eql([]);
+                done();
+            }).catch(done);
+        });
+
+        it('should return items', function (done) {
+            var case4 = require('./case4');
+            _loadFixtures(case4.fixtures).then(function () {
+                return itemService.findAll();
+            }).then(function (items) {
+                should(items).eql(case4.expected);
+                done();
+            }).catch(done);
+        });
     });
 });
