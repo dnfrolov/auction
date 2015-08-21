@@ -10,8 +10,8 @@ module.exports = function (imports) {
         var database;
 
         before(function () {
-            itemService = imports.app.getService('services').itemService;
-            database = imports.app.getService('database');
+            itemService = imports.services.itemService;
+            database = imports.database;
         });
 
         it('should have method #findById', function () {

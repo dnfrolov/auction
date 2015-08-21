@@ -10,10 +10,9 @@ module.exports = function (imports) {
         var database;
 
         before(function () {
-            var services = imports.app.getService('services');
-            userService = services.userService;
-            errors = services.errors;
-            database = imports.app.getService('database');
+            userService = imports.services.userService;
+            errors = imports.services.errors;
+            database = imports.database;
         });
 
         it('should have method #create', function () {

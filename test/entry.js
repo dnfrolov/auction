@@ -15,6 +15,8 @@ before(function (done) {
             done(err);
         } else {
             imports.app = app;
+            imports.services = app.getService('services');
+            imports.database = app.getService('database');
             done();
         }
     });
