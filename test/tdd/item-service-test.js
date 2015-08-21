@@ -10,6 +10,7 @@ var sequelizeFixtures = require('sequelize-fixtures');
 var architectConfig = architect.loadConfig(path.join(__dirname, '../../architect-config.js'));
 
 var database;
+var errors;
 var userService;
 var itemService;
 
@@ -21,6 +22,7 @@ before(function (done) {
         } else {
             database = app.getService('database');
             var services = app.getService('services');
+            errors = services.errors;
             itemService = services.itemService;
             userService = services.userService;
             done();
@@ -95,7 +97,9 @@ describe('item-service', function () {
 describe('user-service', function () {
 
     beforeEach(function (done) {
-        database.db.sync({force: true}).then(done).catch(done);
+        database.db.sync({force: true}).then(function () {
+            done();
+        });
     });
 
     it('should have method #create', function () {
@@ -103,12 +107,46 @@ describe('user-service', function () {
     });
 
     describe('#create', function () {
-        it('should return validation errors', function () {
 
+        function testValidation(rawUser) {
+            return function (done) {
+                userService.create(rawUser).then(function () {
+                    done(new Error())
+                }).catch(function (err) {
+                    should(err).exist;
+                    err.should.be.an.instanceOf(errors.ValidationError);
+                    err.should.have.property('errors').and.be.an.Array;
+                    err.errors.length.should.be.above(0);
+                    err.errors.forEach(function (error) {
+                        error.should.have.property('message').and.be.a.String;
+                    });
+                    done();
+                });
+            };
+        }
+
+
+        it('should return validation errors for null passed', testValidation(null));
+        it('should return validation errors for missing name', testValidation({}));
+
+        it('should create user', function (done) {
+            var rawUser = {name: 'alex'};
+            userService.create(rawUser).then(function (user) {
+                should(user).exist;
+                user.should.have.properties(rawUser);
+                done();
+            }).catch(done);
         });
 
-        it('should create user', function () {
-
+        it('should find user', function (done) {
+            var rawUser = {name: 'alex'};
+            userService.create(rawUser).then(function () {
+                return userService.create(rawUser);
+            }).then(function (user) {
+                should(user).exist;
+                user.should.have.properties(rawUser);
+                done();
+            }).catch(done);
         });
     });
 
