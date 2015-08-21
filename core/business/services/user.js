@@ -27,6 +27,7 @@ module.exports = function (models) {
     };
 
     self.create = function (data) {
+        data = data || {};
         return User
             .findOrCreate({where: {name: data.name}})
             .spread(function (user, created) {
