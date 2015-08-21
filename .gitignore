@@ -2,3 +2,4 @@ node_modules/*
 public/vendor/*
 public/assets/js/app.js
 .idea/*
+coverage
