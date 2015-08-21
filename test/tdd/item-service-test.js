@@ -139,12 +139,12 @@ describe('user-service', function () {
         });
 
         it('should find user', function (done) {
-            var rawUser = {name: 'alex'};
-            userService.create(rawUser).then(function () {
-                return userService.create(rawUser);
+            var case5 = require('./case5');
+            sequelizeFixtures.loadFixtures(case5.fixtures, database.models).then(function () {
+                return userService.create(case5.income);
             }).then(function (user) {
                 should(user).exist;
-                user.should.have.properties(rawUser);
+                user.should.eql(case5.expected);
                 done();
             }).catch(done);
         });
