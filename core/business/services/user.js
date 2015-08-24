@@ -2,7 +2,10 @@
 
 module.exports = function (models) {
     var User = models.User;
-    var self = {};
+    var self = {
+        name: models.User.name
+    };
+
 
     self.create = function (data) {
         data = data || {};
