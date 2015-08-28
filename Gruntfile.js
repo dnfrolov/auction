@@ -3,8 +3,10 @@
 module.exports = function (grunt) {
     grunt.initConfig({
         path: {
-            app: 'public/assets/js/app.js',
-            entry: 'public/app/index.js'
+            ngBundle: 'public/assets/js/app.js',
+            ngEntry: 'public/app/index.js',
+            flEntry: 'public/flux/app/index.js',
+            flBundle: 'public/flux/bundle.js'
         },
 
         browserify: {
@@ -20,12 +22,14 @@ module.exports = function (grunt) {
                     }
                 },
                 files: {
-                    '<%= path.app %>': ['<%= path.entry %>']
+                    '<%= path.ngBundle %>': ['<%= path.ngEntry %>'],
+                    '<%= path.flBundle %>': ['<%= path.flEntry %>']
                 }
             },
             prod: {
                 files: {
-                    '<%= path.app %>': ['<%= path.entry %>']
+                    '<%= path.ngBundle %>': ['<%= path.ngEntry %>'],
+                    '<%= path.flBundle %>': ['<%= path.flEntry %>']
                 }
             }
         }

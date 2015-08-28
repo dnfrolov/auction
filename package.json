@@ -19,8 +19,12 @@
     "jade": "^1.11.0",
     "lodash": "^3.10.1",
     "mysql": "^2.8.0",
+    "react": "^0.13.3",
+    "reactify": "^1.1.1",
+    "reflux": "^0.2.12",
     "sequelize": "^3.5.1",
-    "socket.io": "^1.3.6"
+    "socket.io": "^1.3.6",
+    "superagent": "^1.3.0"
   },
   "devDependencies": {
     "browserify": "^11.0.1",
@@ -36,7 +40,8 @@
   "browserify": {
     "transform": [
       "browserify-shim",
-      "browserify-plain-jade"
+      "browserify-plain-jade",
+      "reactify"
     ]
   },
   "browserify-shim": {
