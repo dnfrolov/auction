@@ -4,3 +4,4 @@ public/assets/js/app.js
 public/flux/bundle.js
 .idea/*
 coverage
+./vagrant
