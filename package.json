@@ -31,11 +31,14 @@
     "browserify-plain-jade": "^0.2.2",
     "browserify-shim": "^3.8.10",
     "grunt": "^0.4.5",
-    "mocha": "^2.2.5",
-    "sequelize-fixtures": "^0.4.7",
-    "should": "^7.0.4",
     "grunt-browserify": "^4.0.0",
-    "istanbul": "^0.3.18"
+    "grunt-concurrent": "^2.0.3",
+    "grunt-nodemon": "^0.4.0",
+    "istanbul": "^0.3.18",
+    "mocha": "^2.2.5",
+    "nodemon": "^1.5.0",
+    "sequelize-fixtures": "^0.4.7",
+    "should": "^7.0.4"
   },
   "browserify": {
     "transform": [

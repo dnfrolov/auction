@@ -2,6 +2,19 @@
 
 module.exports = function (grunt) {
     grunt.initConfig({
+        concurrent: {
+            dev: {
+                tasks: ['browserify:dev', 'nodemon'],
+                options: {
+                    logConcurrentOutput: true
+                }
+            }
+        },
+        nodemon: {
+            dev: {
+                script: 'server.js'
+            }
+        },
         path: {
             ngBundle: 'public/assets/js/app.js',
             ngEntry: 'public/app/index.js',
@@ -36,6 +49,8 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-nodemon');
+    grunt.loadNpmTasks('grunt-concurrent');
 
-    grunt.registerTask('dev', ['browserify:dev']);
+    grunt.registerTask('dev', ['concurrent:dev']);
 };
